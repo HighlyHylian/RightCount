@@ -22,14 +22,17 @@ def write_entry(timestamp, count):
         file.write(f"{timestamp},{count}\n")
 
 def signal_handler(sig, frame):
+    global interrupted
     print("\nSaving count and exiting.")
-    write_entry(datetime.now().timestamp(), count)
+    interrupted = True
     exit(0)
 
 signal.signal(signal.SIGINT, signal_handler)
 
 timestamp, count = read_last_entry()
 print(f"Last tally at {datetime.fromtimestamp(timestamp)} - Count: {count}")
+
+interrupted = False
 
 try:
     while True:
@@ -40,3 +43,6 @@ try:
         write_entry(timestamp, count)
 except KeyboardInterrupt:
     print("\nInterrupted with Ctrl+C.")
+
+if not interrupted:
+    write_entry(timestamp, count)
