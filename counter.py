@@ -40,4 +40,3 @@ try:
         write_entry(timestamp, count)
 except KeyboardInterrupt:
     print("\nInterrupted with Ctrl+C.")
-    write_entry(timestamp, count)
