@@ -1,0 +1,1 @@
+This was a project I made out of boredom and frustration. An instructor would say the word "right" about every 5 seconds, and I wanted to run some analysis on it. This could be repurposed to a general timestamped event counter.
